@@ -1,15 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import {useStateContext} from '../context/StateContextProvider'
 
 const AddTransaction = () => {
 
  const [text, setText] = useState("");
- const [amount, setAmount] = useState(0)
+ const [amount, setAmount] = useState(0);
+
+ const {addTransaction} = useStateContext();
+
+ const handleSubmit = (e) => { 
+    console.log("mau caralhinho")
+    e.preventDefault()
+    const newTransaction = {
+        id: Math.floor( Math.random() * 1000000),
+        text,
+        amount: + amount // adding the + transforms the string into a number
+    }
+    addTransaction(newTransaction)
+    setText("")
+    setAmount(0)
+  }
 
   return (
     <>
         <h3>AddTransaction</h3>    
         {/* // TODO: onSubmit */}
-        <form>
+        <form onSubmit={handleSubmit}>
             <div className="form-control">
                 <label>Text</label>
                 <input type="text" placeholder='Enter text ...' 
@@ -26,7 +42,9 @@ const AddTransaction = () => {
                 />
             </div>
 
-            <button className='btn'>Add Transaction</button>
+            <button className='btn' >
+                Add Transaction
+            </button>
            
         </form>
     </>

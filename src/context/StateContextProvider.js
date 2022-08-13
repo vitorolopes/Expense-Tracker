@@ -18,14 +18,20 @@ export const StateContextProvider = ( { children } ) => {
 
     const deleteTransaction = (id) => { 
         dispatch({type: "DELETE_TRANSACTION", payload: id})
-        // state.transactions.filter( transaction => transaction.id !== id)
     }
+
+    const addTransaction = (transaction) => {
+        dispatch({type: "ADD_TRANSACTION", payload: transaction})
+    }
+
+
     
     return(
         <StateContext.Provider
             value={{
                 ...state,
-                deleteTransaction
+                deleteTransaction,
+                addTransaction,
             }}
         >
             {children}
@@ -35,3 +41,5 @@ export const StateContextProvider = ( { children } ) => {
 }
 
 export const useStateContext = () => useContext(StateContext)
+
+

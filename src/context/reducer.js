@@ -9,6 +9,13 @@ const reducer = (prevState, action) => {
             }
             return newState
         }
+        case "ADD_TRANSACTION": {
+            const newState = {
+                        ...prevState, 
+                        transactions: [...prevState.transactions, action.payload]
+            }
+            return newState
+        }
         default:
             return prevState
     }
