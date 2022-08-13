@@ -15,11 +15,17 @@ const initialState = {
 export const StateContextProvider = ( { children } ) => {
 
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    const deleteTransaction = (id) => { 
+        dispatch({type: "DELETE_TRANSACTION", payload: id})
+        // state.transactions.filter( transaction => transaction.id !== id)
+    }
     
     return(
         <StateContext.Provider
             value={{
-                initialState
+                ...state,
+                deleteTransaction
             }}
         >
             {children}

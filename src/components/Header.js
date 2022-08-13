@@ -5,7 +5,7 @@ const Header = () => {
 
   const {initialState} = useStateContext();
 
-  console.log(initialState.transactions[0].text)
+  // console.log(initialState.transactions[0].text)
 
   return (
     <h2>Expense Tracker</h2>
