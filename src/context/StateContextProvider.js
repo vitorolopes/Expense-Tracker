@@ -24,8 +24,6 @@ export const StateContextProvider = ( { children } ) => {
         dispatch({type: "ADD_TRANSACTION", payload: transaction})
     }
 
-
-    
     return(
         <StateContext.Provider
             value={{

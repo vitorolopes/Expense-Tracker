@@ -9,7 +9,6 @@ const AddTransaction = () => {
  const {addTransaction} = useStateContext();
 
  const handleSubmit = (e) => { 
-    console.log("mau caralhinho")
     e.preventDefault()
     const newTransaction = {
         id: Math.floor( Math.random() * 1000000),
@@ -24,7 +23,6 @@ const AddTransaction = () => {
   return (
     <>
         <h3>AddTransaction</h3>    
-        {/* // TODO: onSubmit */}
         <form onSubmit={handleSubmit}>
             <div className="form-control">
                 <label>Text</label>
